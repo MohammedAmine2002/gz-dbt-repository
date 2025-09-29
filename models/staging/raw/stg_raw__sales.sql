@@ -1,24 +1,22 @@
- -- stg_raw__sales.sql
+with 
 
- with
+source as (
 
- source as (
+    select * from {{ source('raw', 'sales') }}
 
-     select * from {{ source('raw', 'sales') }}
+),
 
- ),
+renamed as (
 
- renamed as (
+    select
+        date_date,
+        orders_id,
+        pdt_id,
+        revenue,
+        quantity
 
-     select
-         date_date,
-         orders_id,
-         pdt_id,
-         revenue,
-         quantity
+    from source
 
-     from source
+)
 
- )
-
- select * from renamed
+select * from renamed
