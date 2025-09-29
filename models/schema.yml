@@ -5,7 +5,46 @@ sources:
     tables:
       - name: sales        # alias pour dbt
         identifier: raw_gz_sales
+        description: sales of Greenweez / we have on row per product_id found in each orders_id
+      # Freshness testing - make sure to fill in the ...
+        loaded_at_field: "CAST(date_date AS TIMESTAMP)"
+        freshness:
+           warn_after: {count: 90, period: day}
+        columns:
+           - name: date_date
+             description: date of purchase
+           - name: orders_id
+             description: Unique identifier of the order
+             tests : 
+             - not_null
+           - name: pdt_id
+             description: Unique identifier of the product
+           - name: revenue
+             description: Total revenue of the order line
+           - name: quantity
+             description: Number of products purchased
+
       - name: product
         identifier: raw_gz_product
+        columns:
+          - name: products_id
+            description: Unique identifier of the product
+            tests : 
+             - unique
+             - not_null
+          - name: purchase_price
+            description: Purchase price of the product (cast as FLOAT64 in staging)
       - name: ship
         identifier: raw_gz_ship
+        columns:
+          - name: orders_id
+            description: Unique identifier of the order
+            tests : 
+             - unique
+             - not_null
+          - name: shipping_fee
+            description: Fee charged for shipping
+          - name: logcost
+            description: Logistic cost of shipping
+          - name: ship_cost
+            description: Actual shipping cost
