@@ -6,10 +6,6 @@ sources:
       - name: sales        # alias pour dbt
         identifier: raw_gz_sales
         description: sales of Greenweez / we have on row per product_id found in each orders_id
-      # Freshness testing - make sure to fill in the ...
-        loaded_at_field: "CAST(date_date AS TIMESTAMP)"
-        freshness:
-           warn_after: {count: 90, period: day}
         columns:
            - name: date_date
              description: date of purchase
@@ -48,3 +44,28 @@ sources:
             description: Logistic cost of shipping
           - name: ship_cost
             description: Actual shipping cost
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: adwords ads
+        columns:
+          - name: campaign_key
+            description: primarykey
+      - name: bing
+        identifier: raw_gz_bing
+        description: bing ads
+        columns:
+          - name: campaign_key
+            description: primarykey
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: criteo ads
+        columns:
+          - name: campaign_key
+            description: primarykey
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: facebook ads
+        columns:
+          - name: campaign_key
+            description:
+              primarykey
