@@ -1,4 +1,3 @@
- {{ config(materialized='table') }}
 SELECT date_date,orders_id,
 COUNT(orders_id) as Total_number_of_transactions,
 Sum(revenue) as Total_revenue,
