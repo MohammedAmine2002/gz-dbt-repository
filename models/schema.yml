@@ -50,18 +50,27 @@ sources:
         columns:
           - name: campaign_key
             description: primarykey
+            tests : 
+             - unique
+             - not_null
       - name: bing
         identifier: raw_gz_bing
         description: bing ads
         columns:
           - name: campaign_key
             description: primarykey
+            tests : 
+             - unique
+             - not_null
       - name: criteo
         identifier: raw_gz_criteo
         description: criteo ads
         columns:
           - name: campaign_key
             description: primarykey
+            tests : 
+             - unique
+             - not_null
       - name: facebook
         identifier: raw_gz_facebook
         description: facebook ads
@@ -69,3 +78,6 @@ sources:
           - name: campaign_key
             description:
               primarykey
+            tests : 
+             - unique
+             - not_null
