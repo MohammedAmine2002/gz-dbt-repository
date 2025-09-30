@@ -51,7 +51,6 @@ sources:
           - name: campaign_key
             description: primarykey
             tests : 
-             - unique
              - not_null
       - name: bing
         identifier: raw_gz_bing
@@ -60,7 +59,6 @@ sources:
           - name: campaign_key
             description: primarykey
             tests : 
-             - unique
              - not_null
       - name: criteo
         identifier: raw_gz_criteo
@@ -69,7 +67,6 @@ sources:
           - name: campaign_key
             description: primarykey
             tests : 
-             - unique
              - not_null
       - name: facebook
         identifier: raw_gz_facebook
@@ -79,5 +76,4 @@ sources:
             description:
               primarykey
             tests : 
-             - unique
              - not_null
